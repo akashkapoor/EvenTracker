@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+}
+footer {
+    color: #666;
+    background: #222;
+    
+    border-top: 1px solid #000;
+}
+footer a {
+    color: #999;
+}
+footer a:hover {
+    color: #efefef;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -63px;
+}
+.push {
+    height: 63px;
+}
+.form-group{
+    width: 50%;
+    padding-left: 10px;
+}

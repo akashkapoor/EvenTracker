@@ -1,0 +1,33 @@
+extends layout
+
+block headtop
+  script(src='http://maps.google.com/maps/api/js?sensor=false', type='text/javascript')
+
+block content
+  script(type='text/javascript').  
+    var imageSets =!{JSON.stringify(imageSets)}
+  #map(style='width: 100%; height: 400px;')
+  |   
+  script(type='text/javascript').
+    console.log(imageSets);
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 3,
+      center: new google.maps.LatLng(9.25035, -16.92841),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    var infowindow = new google.maps.InfoWindow();
+    var marker, i;
+    console.log(imageSets[0]);
+    for (i = 0; i < imageSets.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(imageSets[i].latitude, imageSets[i].longitude),
+        map: map
+      });
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent('<IMG BORDER="0" height="120" width="120" ALIGN="Left" SRC="'+imageSets[i].url+'"> <p> ' + imageSets[i].caption + '/<p>');
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+

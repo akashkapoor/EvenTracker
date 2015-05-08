@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .bs-example(data-example-id='thumbnails-with-custom-content')
+    .row
+      for image in imageSets
+        .col-sm-3.col-md-2
+          .thumbnail
+            img(data-src='holder.js/100%x200', alt='100%x200', src='#{image.url}', data-holder-rendered='true', style='height: 306px; width: 306px; display: block;')
+            |           
+            .caption
+              h3#thumbnail-label
+                | #{image.caption}
+                a.anchorjs-link(href='#thumbnail-label')
+                  span.anchorjs-icon
+              |             
+              p #{image.createTime}
+              |             
+              p
+                a.btn.btn-default(href='#{image.instaLink}', role='button') View on Instagram
+        |       

@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    title=title
+    link(href='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.css', rel='stylesheet', media='screen')
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css")
+    link(rel="stylesheet", href="stylesheets/footer.css")
+    link(rel="stylesheet", href="stylesheets/style.css")
+    script(src='http://code.jquery.com/jquery-2.1.0.js')
+    block headtop
+  body
+    nav.navbar.navbar-default(role='navigation', class="navbar navbar-static-top bs-docs-nav")
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') evenTracker
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(data-toggle='modal', href='/createStory', data-target='#myModal') Create Story
+            li
+              a(id = 'name', href='#') Existing Stories 
+    // Modal
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+        // /.modal-content
+      // /.modal-dialog
+    // /.modal
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js')
+    .jumbotron
+        h1 evenTracker
+            |   
+            p(div='blah') Track an event through the eyes of Instagram
+            |   
+            p
+                //a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
+    block content
+    
+    script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
+    //script(type="text/javascript").
+      //JQuery to hide the name on clicking Akash Kapoor.
+    //  $(document).ready(function (){$("#name").click(function (event){alert("Thanks.");event.preventDefault();$( this ).hide( "slow" );});});

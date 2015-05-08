@@ -1,0 +1,111 @@
+doctype html
+html
+  head
+    meta(http-equiv='content-type', content='text/html; charset=UTF-8')
+    |   
+    title Create New Story
+    link(rel="stylesheet", href="stylesheets/style.css")
+    link(href='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.css', rel='stylesheet', media='screen')
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css")
+    link(rel="stylesheet", href="stylesheets/footer.css")
+    script(src='http://code.jquery.com/jquery-2.1.0.js')
+  body
+    .modal-header
+      button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+      |                  
+      h4.modal-title Create New Story
+    // /modal-header
+    .modal-body
+      p
+        | Please provide the times in unix time stamp. Please visit <a href="https://ibboard.co.uk/timestamp.php" target="_blank"> here </a> to get unix timestamps.
+      form(action="/createStory/process" id="my-form").form-horizontal
+          fieldset
+              // Text input
+              .form-group
+                label.col-md-4.control-label(for='name') Story Information
+                |   
+                |   
+                .col-md-8
+                  input#name.form-control.input-md(name='name', type='text', placeholder='Story Name', required='')
+              // Text input
+              .form-group
+                label.col-md-4.control-label(for='start')
+                |   
+                .col-md-8
+                  input#start.form-control.input-md(name='start', type='text', placeholder='Start Time in Unix Time')
+              // Text input
+              .form-group
+                label.col-md-4.control-label(for='end')
+                |   
+                |   
+                .col-md-8
+                  input#end.form-control.input-md(name='end', type='text', placeholder='End Time in Unix Time')
+              // Appended Input
+              .form-group
+                label.col-md-4.control-label(for='tag1') Tags
+                |   
+                .col-md-8
+                  .input-group
+                    input#tag1.form-control(name='tag1', placeholder='Tag1', type='text', required='')
+                    |       
+                    span.input-group-addon OR
+              // Appended Input
+              .form-group
+                label.col-md-4.control-label(for='tag2')
+                |   
+                .col-md-8
+                  .input-group
+                    input#tag2.form-control(name='tag2', placeholder='Tag2', type='text')
+                    |       
+                    span.input-group-addon OR
+              // Appended Input
+              .form-group
+                label.col-md-4.control-label(for='lat') Location
+                |   
+                .col-md-8
+                  .input-group
+                    input#lat.form-control(name='lat', placeholder='Latitude', type='text')
+                    |       
+                    span.input-group-addon AND
+              // Appended Input
+              .form-group
+                label.col-md-4.control-label(for='lon')
+                |   
+                .col-md-8
+                  .input-group
+                    input#lon.form-control(name='lon', placeholder='Longitude', type='text')
+                    |       
+                    span.input-group-addon WITHIN
+              // Appended Input
+              .form-group
+                label.col-md-4.control-label(for='dist')
+                |   
+                .col-md-8
+                  .input-group
+                    input#dist.form-control(name='dist', placeholder='Miles', type='text')
+                    |       
+                    span.input-group-addon Distance
+              // Button
+              .modal-footer
+                .form-group
+                  button#submit.btn.btn-primary(name='submit') Submit
+    // /modal-body
+    // /modal-footer
+    script(type='text/javascript').
+      $(document).ready(function ()
+        {
+          $("#submit").click(function (event){
+            event.preventDefault();
+            //alert($('#my-form').serialize());
+            $.get('/createStory/process?' + $('#my-form').serialize(), function(data){
+              //alert("Data Loaded: " + data);
+              $('#myModal .modal-body').html(data);
+              //$('#myModal .modal-header').html('<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title">Confirmation</h4></div>');
+              $('#myModal').modal('show');
+            });
+            //$( this ).hide( "slow" );
+            //$('#myModal .modal-body').html('Test: '+new Date());
+            $('#myModal').modal('show');  
+            });
+        });

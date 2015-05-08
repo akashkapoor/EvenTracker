@@ -1,0 +1,102 @@
+//extends layout
+//
+//block content
+//  h1=title
+//  p Welcome to #{title}
+doctype html
+html
+  head
+    meta(http-equiv='content-type', content='text/html; charset=UTF-8')
+    |   
+    title Remote file for Bootstrap Modal
+    link(rel="stylesheet", href="stylesheets/style.css")
+    link(href='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.css', rel='stylesheet', media='screen')
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css")
+    link(rel="stylesheet", href="stylesheets/footer.css")
+    script(src='http://code.jquery.com/jquery-2.1.0.js')
+  body
+    .modal-header
+      button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+      |                  
+      h4.modal-title Modal title
+    // /modal-header
+    .modal-body
+      p
+        | Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella, sed quisque serpentes latius pro viribus repellere moliens, nunc globis confertos, aliquotiens et dispersos multitudine superabatur ingenti.
+      form(action="/create/process").form-horizontal
+        fieldset
+            // Form Name
+            legend Create a new story
+            // Text input
+            .control-group
+              label.control-label(for='name') Story Name
+              |   
+              .controls
+                input#name.input-xlarge(name='name', type='text', placeholder='Story Name')
+            // Appended Input
+            .control-group
+              label.control-label(for='tag1') Tags
+              |   
+              .controls
+                .input-append
+                  input#tag1.input-xlarge(name='tag1', placeholder='Tag 1', type='text')
+                  |       
+                  span.add-on OR
+            // Appended Input
+            .control-group
+              label.control-label(for='tag2')
+              |   
+              .controls
+                .input-append
+                  input#tag2.input-xlarge(name='tag2', placeholder='Tag2', type='text')
+                  |       
+                  span.add-on OR
+            // Text input
+            .control-group
+              label.control-label(for='start') Start Time
+              |   
+              .controls
+                input#start.input-xlarge(name='start', type='text', placeholder='Start Time')
+            // Text input
+            .control-group
+              label.control-label(for='End') End Time
+              |   
+              .controls
+                input#end.input-xlarge(name='end', type='text', placeholder='End Time')
+                input#datetimepicker4.form-control(type='text')
+              |         
+              script(type='text/javascript').
+                $(function () {
+                	$('#datetimepicker4').datetimepicker();
+                });
+            // Text input
+            .control-group
+              label.control-label(for='lat') Location
+              |   
+              .controls
+                input#lat.input-xlarge(name='lat', type='text', placeholder='Latitude')
+            // Text input
+            .control-group
+              label.control-label(for='lon')
+              |   
+              .controls
+                input#lon.input-xlarge(name='lon', type='text', placeholder='Longitude')
+            // Text input
+            .control-group
+              label.control-label(for='dist')
+              |   
+              .controls
+                input#dist.input-xlarge(name='dist', type='text', placeholder='Distance in *')
+            // Button
+            .control-group
+              label.control-label(for='submit')
+              |   
+              .controls
+                button#submit.btn.btn-primary(name='submit') Create
+    // /modal-body
+    .modal-footer
+      button.btn.btn-default(type='button', data-dismiss='modal') Close
+      |                 
+      button.btn.btn-primary(type='button') Save changes
+    // /modal-footer
